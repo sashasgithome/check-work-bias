@@ -1,7 +1,7 @@
 # ========================================================================================================
 # Purpose:      Gender Lawsuit Discrimination - Female Doctors Representative
 # Author:       Sasha Annabel (Slides 6,7,8)
-# Topics:       BC2406 Summer Course - Team Graded Assignment 
+# Topics:       BC2406 Summer Course
 # Data Source:  Lawsuit.csv
 # Packages:     data.table  
 #=========================================================================================================
