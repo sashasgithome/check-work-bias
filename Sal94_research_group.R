@@ -1,4 +1,5 @@
-setwd('C:/Users/73691/Desktop/study/Analytics/BC2406 Analytics I Course Materials/Graded Team Assignment - Gender Discrimination Lawsuit')
+#CODE BY MUHAMMAD FIRDAUS BIN MUNTOHA
+
 library(data.table)
 library(ggplot2)
 
