@@ -1,32 +1,26 @@
 #CODE BY MUHAMMAD FIRDAUS BIN MUNTOHA
 
-library(data.table)
+library(dplyr)
 library(ggplot2)
+library(data.table)
 
-# Create subset (female and male)
-dt<-fread('Lawsuit.csv')
-f.dt<-dt[Gender==0]
-m.dt<-dt[Gender==1]
+# Load file into R
+lawsuit.dt<-fread(“Lawsuit.csv”)
 
-# Step 1: compare the salary of female and male with research emphasis
-# Create subset (female and male with research emphasis)
-res.group <- dt[Clin == 0]
-f.res <-dt[Gender==0 & Clin==0]
-m.res <-dt[Gender==1 & Clin==0]
+# Divide datasets into Male and Female
+lawsuit.f<-filter(lawsuit.dt, Gender == 0)
+lawsuit.m<-filter(lawsuit.dt, Gender == 1)
 
-# Construct linear regression model to predict salary based on publication rate and experience
-model1 <- lm(Sal94 ~ Prate + Exper, data = res.group.dt)
-summary(model1)
+# Factor categorical values
+lawsuit.f$Dept<-factor(lawsuit.dt$Dept, labels = dept_names)
+lawsuit.m$Dept<-factor(lawsuit.m$Dept,labels = dept_names)
 
-# Calculate total salary gap for female with research emphasis----- = 97303.66 (predicted salary > actual salary)
-f.res$predicted.salary <- predict(model1, newdata = f.res)
-f.res[, f.salary.gap := predicted.salary - Sal94]
-total.female.salary.gap <- sum(f.res$f.salary.gap)
-print(total.female.salary.gap)
+# Rename Dept names
+dept_names<-c("1"="Biochem/Molc. Bio","2"="Physiology","3"="Genetics","4"="Pediatrics","5"="Medicine","6"="Surgery")
 
+#Plots
+female_rank_breakdown_dept<-ggplot(lawsuit.f,aes(Dept,fill=Rank))+geom_bar(position = "dodge") + labs(title="No. of Female Doctors in each Department segregated into respective Ranks", x="Department",y="No. of Doctors") + scale_fill_manual(name="Rank",values=c("lightblue","steelblue","navy"),labels=c("Assistant","Associate","Full Professor"))
+print(female_rank_breakdown_dept)
 
-# Calculate total salary gap for male with research emphasis----- = -97303.66 (predicted salary < actual salary)
-m.res.dt$predicted.salary <- predict(model1, newdata = m.res.dt)
-m.res.dt[, m.salary.gap := predicted.salary - Sal94]
-total.male.salary.gap <- sum(m.res.dt$m.salary.gap)
-print(total.male.salary.gap)
+male_rank_breakdown_dept<-ggplot(lawsuit.m,aes(Dept,fill=Rank))+geom_bar(position = "dodge") + labs(title="No. of Male Doctors in each Department segregated into respective Ranks", x="Department",y="No. of Doctors") + scale_fill_manual(name="Rank",values=c("lightblue","steelblue","navy"),labels=c("Assistant","Associate","Full Professor"))
+print(male_rank_breakdown_dept)
