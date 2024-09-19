@@ -1,4 +1,5 @@
-setwd('C:/Users/Administrator/Desktop/BC2406 Analytics I Course Materials/Graded Team Assignment - Gender Discrimination Lawsuit')
+#CODE BY WEI SIJIA
+
 library(data.table)
 library(ggplot2)
 
