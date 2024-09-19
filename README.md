@@ -7,5 +7,5 @@
 
 ##### The presentation gives an easy flow in describing how the dataset supports our client's argument : that female doctors are faced with work discrimination one way or another.
 ##### To be exact, the following slide shows our stand in the lawsuit process. Please head to the Slide Presentation for the momre thorough data explanations!
-<img src="https://github.com/user-attachments/assets/1d3db65c-4759-4f28-81b9-906f2145cd62" width="700" height="400">
+<img src="https://github.com/user-attachments/assets/1d3db65c-4759-4f28-81b9-906f2145cd62" width="850" height="600">
 
